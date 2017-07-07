@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour {
 
+	//GameObject paddle;
 
 	//Paddle speed
 	private float speed = 20.0f;
@@ -14,7 +15,7 @@ public class PaddleController : MonoBehaviour {
 
 	//Ball back to starting point
 	public void restart () {
-		this.transform.position = paddleStart;
+		gameObject.transform.position = paddleStart;
 	}
 
 	void Start () {
@@ -28,13 +29,18 @@ public class PaddleController : MonoBehaviour {
 		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), 0, 0);
 
 		//Move paddle
-		this.transform.Translate (direction * speed * Time.deltaTime);
+		if (Mathf.Abs(gameObject.transform.position.x) < 12 || (direction.x * gameObject.transform.position.x) < 0) {
+		gameObject.transform.Translate (direction * speed * Time.deltaTime);
+		}
 	}
 
 	//Collsion notification
 	void OnCollisionEnter (Collision col) {
 		
-		hit = true;
+		if(col.gameObject.name == "Ball")
+		{
+			hit = true;
+		}
 	}
 }
 

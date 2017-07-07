@@ -99,6 +99,7 @@
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
 Assets/Scripts/BallController.cs
+Assets/Scripts/BrickController.cs
 Assets/Scripts/Game.cs
 Assets/Scripts/PaddleController.cs
 Assets/Scripts/WallController.cs
