@@ -169,7 +169,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &382881991
 MeshFilter:
@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 915838534}
   - component: {fileID: 915838533}
   - component: {fileID: 915838532}
+  - component: {fileID: 915838536}
   m_Layer: 0
   m_Name: Brick
   m_TagString: Untagged
@@ -367,12 +368,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915838531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.46, y: 10.27, z: 0}
-  m_LocalScale: {x: 15.806303, y: 0.056349855, z: 1}
+  m_LocalPosition: {x: 5.29, y: 22.84, z: 0}
+  m_LocalScale: {x: 7.2732816, y: 1.1868485, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915838536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 915838531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f91d5c441494d9e85b5fc1f6bde0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 1195858927}
 --- !u!1 &1118192669
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +447,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1118192672
 MeshFilter:
@@ -859,7 +872,6 @@ GameObject:
   - component: {fileID: 1962342792}
   - component: {fileID: 1962342791}
   - component: {fileID: 1962342795}
-  - component: {fileID: 1962342796}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -942,21 +954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cbebdd1c12946a68183916ce8aef61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &1962342796
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962342790}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 124
-  m_CollisionDetection: 0
 --- !u!1 &2099238705
 GameObject:
   m_ObjectHideFlags: 0
