@@ -17,13 +17,13 @@ public class BallController : MonoBehaviour {
 		movement = startDir;
 	}
 
-	//Change ball direction in one axis
-	public void redirect(axisSwitch axis) {
+	//Change ball direction in one axis, change anlge of ball off paddle, may split into two functions later
+	public void redirect(axisSwitch axis, float angleChange) {
 		if ((int)axis == 0) {
 			movement = new Vector3 (-movement.x, movement.y, movement.z);
 		}
 		else if ((int)axis == 1) {
-			movement = new Vector3 (movement.x, -movement.y, movement.z);
+			movement = new Vector3 (movement.x + angleChange, -movement.y, movement.z);
 		}
 		else if ((int)axis == 2) {
 			movement = new Vector3 (movement.x, movement.y, -movement.z);

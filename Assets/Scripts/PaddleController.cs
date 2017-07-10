@@ -9,7 +9,8 @@ public class PaddleController : MonoBehaviour {
 	private Vector3 paddleStart;
 
 	//If collide
-	public bool hit { get; set; } 
+	public bool hit { get; set; }
+	public float collideLoc { get; set; }
 
 	//Ball back to starting point
 	public void restart () {
@@ -26,8 +27,8 @@ public class PaddleController : MonoBehaviour {
 		//Movement based on horizontal input
 		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), 0, 0);
 
-		//Move paddle
-		if (Mathf.Abs(gameObject.transform.position.x) < 12 || (direction.x * gameObject.transform.position.x) < 0) {
+		//Move paddle without colliding into wall
+		if (direction.x * gameObject.transform.position.x < 0 || (Mathf.Abs(gameObject.transform.position.x) < 12)) {
 		gameObject.transform.Translate (direction * speed * Time.deltaTime);
 		}
 	}
@@ -38,6 +39,12 @@ public class PaddleController : MonoBehaviour {
 		if(col.gameObject.name == "Ball")
 		{
 			hit = true;
+			collideLoc = 2 * (col.transform.position.x - gameObject.transform.position.x);
+
+			//TODO: Will be later used to calculate collision angle
+			Debug.Log (collideLoc);
+
+
 		}
 	}
 }

@@ -19,7 +19,7 @@ public class BrickController : MonoBehaviour {
 
 	void OnCollisionEnter (Collision col) {
 
-		ball.redirect (BallController.axisSwitch.y);
+		ball.redirect (BallController.axisSwitch.y, 0);
 		//gameObject.transform.Translate (0, 0, 5);
 		Destroy(gameObject);
 	}

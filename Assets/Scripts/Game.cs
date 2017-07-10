@@ -20,17 +20,23 @@ public class Game : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+		//Collisions: Walls(TOP - LEFT - RIGHT - BOTTOM), Paddle
 		if (tWall.hit) {
-			ballCon.redirect (BallController.axisSwitch.y);
+			
+			ballCon.redirect (BallController.axisSwitch.y, 0);
 			tWall.hit = false;
+
 		} else if (lWall.hit || rWall.hit) {
-			ballCon.redirect (BallController.axisSwitch.x);
+			
+			ballCon.redirect (BallController.axisSwitch.x, 0);
 			lWall.hit = false;
 			rWall.hit = false;
+
 		} else if (padCon.hit) {
-			ballCon.redirect (BallController.axisSwitch.y);
+			
+			ballCon.redirect (BallController.axisSwitch.y, padCon.collideLoc);
 			padCon.hit = false;
+
 		} else if (bWall.hit) {
 
 			// Paddle to original position
