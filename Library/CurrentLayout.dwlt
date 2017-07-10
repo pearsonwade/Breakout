@@ -40,8 +40,8 @@ MonoBehaviour:
     y: 0
     width: 202
     height: 1126
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -360,9 +360,9 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f2250000
-    m_LastClickedID: 9714
-    m_ExpandedIDs: 00000000e425000000ca9a3bffffff7f
+    m_SelectedIDs: f6250000
+    m_LastClickedID: 9718
+    m_ExpandedIDs: 00000000e825000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -390,7 +390,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e4250000
+    m_ExpandedIDs: 00000000e8250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -421,18 +421,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000442f0000583000001833000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BrickController
-      m_OriginalName: BrickController
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 23880
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
@@ -506,9 +506,9 @@ MonoBehaviour:
     height: 1105
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9a3d0000
-    m_LastClickedID: 15770
-    m_ExpandedIDs: c298f9ff18fcffff00000000
+    m_SelectedIDs: da060000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 18fcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -524,7 +524,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
-      m_ClientGUIView: {fileID: 2}
+      m_ClientGUIView: {fileID: 0}
     m_SearchString: 
   m_ExpandedScenes:
   - Breakout
@@ -558,14 +558,14 @@ MonoBehaviour:
     width: 986
     height: 881
   m_SceneLighting: 1
-  lastFramingTime: 15361.57470703125
+  lastFramingTime: 80.4448471069336
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.7403809, y: 14.2802725, z: -21.437965}
+    m_Target: {x: 24.553978, y: 8.194513, z: 4.689449}
     speed: 2
-    m_Value: {x: 0.7403809, y: 14.2802725, z: -21.437965}
+    m_Value: {x: 24.553978, y: 8.194513, z: 4.689449}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -588,13 +588,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.05428509, y: -0.0014933837, z: 0.00008098723, w: -0.99852437}
+    m_Target: {x: -0.019863231, y: -0.7239833, z: 0.020865012, w: -0.68921584}
     speed: 2
-    m_Value: {x: -0.05428509, y: -0.0014933837, z: 0.00008098723, w: -0.99852437}
+    m_Value: {x: -0.019863231, y: -0.7239833, z: 0.020865012, w: -0.68921584}
   m_Size:
-    m_Target: 2.4452343
+    m_Target: 49.59594
     speed: 2
-    m_Value: 2.4452343
+    m_Value: 49.59594
   m_Ortho:
     m_Target: 0
     speed: 2
