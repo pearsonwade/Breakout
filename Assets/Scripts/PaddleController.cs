@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour {
 
-	//GameObject paddle;
-
 	//Paddle speed
 	private float speed = 20.0f;
 	private Vector3 paddleStart;
