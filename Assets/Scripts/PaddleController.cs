@@ -39,7 +39,7 @@ public class PaddleController : MonoBehaviour {
 		if(col.gameObject.name == "Ball")
 		{
 			hit = true;
-			collideLoc = 2 * (col.transform.position.x - gameObject.transform.position.x);
+			collideLoc = 4 * (col.transform.position.x - gameObject.transform.position.x);
 
 			//TODO: Will be later used to calculate collision angle
 			//Debug.Log (collideLoc);

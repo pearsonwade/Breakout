@@ -21,31 +21,40 @@ public class Game : MonoBehaviour {
 	public Text lifeText;
 
 	public bool brickReset { get; set; }
+	public int brickCount;
+	int initBricks;
 
 	// Use this for initialization
 	void Start () {
 		life = 2;
 		lifeText.text = "Lives: " + life.ToString ();
 		brickReset = false;
+		initBricks = brickCount;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown("space") && life < 0) {
+		if (Input.GetKeyDown("space") && (life < 0 || brickCount <= 0)) {
 			brickReset = false;
 			life = 2;
+			brickCount = initBricks;
 			lifeText.text = "Lives: " + life.ToString ();
 			gameOver.gameObject.SetActive (false);
+			// Paddle to original position
+			padCon.restart ();
+			// Ball to original position
+			ballCon.restart ();
 			Time.timeScale = 1;
 
-		} else if (life < 0) {
-			brickReset = true;
+		} else if (life < 0 || brickCount <= 0) {
+			
 			gameOver.gameObject.SetActive (true);
 			Time.timeScale = 0;
+			brickReset = true;
 
 		}
-
+			
 		//Collisions: Walls(TOP - LEFT - RIGHT - BOTTOM), Paddle
 		if (tWall.hit) {
 			

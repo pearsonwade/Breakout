@@ -24,6 +24,7 @@ public class BrickController : MonoBehaviour {
 
 		ball.redirect (BallController.axisSwitch.y, 0);
 		gameObject.transform.Translate (0, 0, 5);
+		--game.brickCount;
 		//Destroy(gameObject);
 	}
 }

@@ -23,7 +23,7 @@ public class BallController : MonoBehaviour {
 			movement = new Vector3 (-movement.x, movement.y, movement.z);
 		}
 		else if ((int)axis == 1) {
-			movement = new Vector3 (movement.x + angleChange, -movement.y, movement.z);
+			movement = new Vector3 ((movement.x / 2) + angleChange, -movement.y, movement.z);
 		}
 		else if ((int)axis == 2) {
 			movement = new Vector3 (movement.x, movement.y, -movement.z);
