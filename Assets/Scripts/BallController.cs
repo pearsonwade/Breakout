@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour {
 
-	private Vector3 startDir = new Vector3(2,16,0);
+	private Vector3 startDir = new Vector3(0,15,0);
 	private Vector3 movement;
 	private Vector3 ballStart;
 
@@ -26,7 +26,7 @@ public class BallController : MonoBehaviour {
 		}
 		else if ((int)axis == 1) {
 			if (paddle) {
-				movement = new Vector3 ((movement.x / 2) + angleChange, -movement.y, movement.z);
+				movement = new Vector3 ((movement.x / 2) + angleChange, -(movement.y - 0.5f), movement.z);
 			} else {
 				movement = new Vector3 (movement.x, -movement.y, movement.z);
 			}
