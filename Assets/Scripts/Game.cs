@@ -5,90 +5,99 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
 
-	public WallController tWall;
-	public WallController lWall;
-	public WallController rWall;
-	public WallController bWall;
+	private int levelCount;
+	public GameObject[] levels = new GameObject[3];
 
 	public BallController ballCon;
 	public PaddleController padCon;
 
 	public Image gameOver;
-
-
+	public Image gameWin;
 
 	private int life;
 	public Text lifeText;
 
-	public bool brickReset { get; set; }
+	//public bool brickReset { get; set; }
 	public int brickCount;
-	int initBricks;
+
+	public void resetPlayer() {
+		padCon.restart ();
+		ballCon.restart ();
+	}
+
+	public void displayLives() {
+		
+		lifeText.text = "Lives: " + life.ToString ();
+	}
+
+	public void loseLife () {
+
+		resetPlayer ();
+		--life;
+
+		if (life >= 0) {
+			displayLives ();
+		}
+	}
+
+	public void stopGame() {
+		Time.timeScale = 0;
+		//brickReset = true;
+
+		if (Input.GetKeyDown ("space")) {
+			life = 2;
+			levelCount = 0;
+			beginLevel ();
+			brickCount = levels[0].transform.childCount;
+
+		}
+	}
+
+	public void beginLevel() {
+		levelSwitch (levelCount);
+		displayLives ();
+		gameOver.gameObject.SetActive (false);
+		gameWin.gameObject.SetActive (false);
+		resetPlayer ();
+		Time.timeScale = 1;
+	}
+
+	public void levelSwitch(int level) {
+		
+		for (int i = 0; i < levels.Length; i++) {
+			levels[i].gameObject.SetActive (false);
+		}
+
+		levels [level].gameObject.SetActive (true);
+		brickCount = levels [level].transform.childCount;
+	}
 
 	// Use this for initialization
 	void Start () {
 		life = 2;
-		lifeText.text = "Lives: " + life.ToString ();
-		brickReset = false;
-		initBricks = brickCount;
+		brickCount = levels[0].transform.childCount;
+		levelCount = 0;
+		beginLevel ();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
+		if (brickCount <= 0) {
 
-		if (Input.GetKeyDown("space") && (life < 0 || brickCount <= 0)) {
-			brickReset = false;
-			life = 2;
-			brickCount = initBricks;
-			lifeText.text = "Lives: " + life.ToString ();
-			gameOver.gameObject.SetActive (false);
-			// Paddle to original position
-			padCon.restart ();
-			// Ball to original position
-			ballCon.restart ();
-			Time.timeScale = 1;
-
-		} else if (life < 0 || brickCount <= 0) {
-			
-			gameOver.gameObject.SetActive (true);
-			Time.timeScale = 0;
-			brickReset = true;
-
-		}
-			
-		//Collisions: Walls(TOP - LEFT - RIGHT - BOTTOM), Paddle
-		if (tWall.hit) {
-			
-			ballCon.redirect (BallController.axisSwitch.y, 0);
-			tWall.hit = false;
-
-		} else if (lWall.hit || rWall.hit) {
-			
-			ballCon.redirect (BallController.axisSwitch.x, 0);
-			lWall.hit = false;
-			rWall.hit = false;
-
-		} else if (padCon.hit) {
-			
-			ballCon.redirect (BallController.axisSwitch.y, padCon.collideLoc);
-			padCon.hit = false;
-
-		} else if (bWall.hit) {
-
-			// Paddle to original position
-			padCon.restart ();
-			// Ball to original position
-			ballCon.restart ();
-
-			//Lose a life
-			--life;
-
-			if (life >= 0) {
-				lifeText.text = "Lives: " + life.ToString ();
+			if (levelCount < levels.Length - 1) {
+				++levelCount;
+				beginLevel ();
+			} else {
+				gameWin.gameObject.SetActive (true);
+				stopGame ();
 			}
 
-			bWall.hit = false;
-
+		} else if (life < 0) {
+			
+			gameOver.gameObject.SetActive (true);
+			stopGame ();
 		}
-
 	}
 }

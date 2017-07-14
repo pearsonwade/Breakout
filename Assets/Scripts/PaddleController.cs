@@ -29,21 +29,8 @@ public class PaddleController : MonoBehaviour {
 
 		//Move paddle without colliding into wall
 		if (direction.x * gameObject.transform.position.x < 0 || (Mathf.Abs(gameObject.transform.position.x) < 12)) {
-		gameObject.transform.Translate (direction * speed * Time.deltaTime);
-		}
-	}
-
-	//Collsion notification
-	void OnCollisionEnter (Collision col) {
-		
-		if(col.gameObject.name == "Ball")
-		{
-			hit = true;
-			collideLoc = 4 * (col.transform.position.x - gameObject.transform.position.x);
-
-			//TODO: Will be later used to calculate collision angle
-			//Debug.Log (collideLoc);
-
+			
+			gameObject.transform.Translate (direction * speed * Time.deltaTime);
 
 		}
 	}
