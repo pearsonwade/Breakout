@@ -10,6 +10,10 @@ public class BrickController : MonoBehaviour {
 	private bool again;
 
 	private float collideSpot { get; set; }
+
+	void Awake() {
+		Application.targetFrameRate = 60;
+	}
 	// Use this for initialization
 	void Start () {
 		initPos = gameObject.transform.position;
@@ -29,7 +33,7 @@ public class BrickController : MonoBehaviour {
 		collideSpot = (col.transform.position.x - gameObject.transform.position.x);
 		//Debug.Log ("Collide Spot: " + collideSpot.ToString());
 
-		if (Mathf.Abs (collideSpot) <= 1.8f) {
+		if (Mathf.Abs (collideSpot) <= 1.85f) {
 			ball.redirect (BallController.axisSwitch.y, 0, false);
 		} else {
 			ball.redirect (BallController.axisSwitch.x, 0, false);

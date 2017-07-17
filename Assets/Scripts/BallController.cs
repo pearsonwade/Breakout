@@ -7,6 +7,7 @@ public class BallController : MonoBehaviour {
 	private Vector3 startDir = new Vector3(0,15,0);
 	private Vector3 movement;
 	private Vector3 ballStart;
+	private bool collided;
 
 	public Game game;
 
@@ -41,6 +42,7 @@ public class BallController : MonoBehaviour {
 		
 		movement = startDir;
 		ballStart = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+		collided = false;
 
 	}
 	
@@ -48,32 +50,46 @@ public class BallController : MonoBehaviour {
 	void Update () {
 
 		//Move the ball
+		//this.transform.Translate (movement * Time.deltaTime);
+	}
+
+	void FixedUpdate() {
+		
+		//Move the ball
 		this.transform.Translate (movement * Time.deltaTime);
 	}
 
 	void OnCollisionEnter (Collision col) {
 
-		if (col.gameObject.name == "Paddle") { //Paddle
+		if (!collided) {
+			
+			collided = true;
 
-			//Debug.Log ("Ball collided with paddle");
-			redirect(axisSwitch.y, 4 * (transform.position.x - col.transform.position.x), true);
+			if (col.gameObject.name == "Paddle") { //Paddle
 
-		} else if (col.gameObject.name == "Left Wall" || col.gameObject.name == "Right Wall") { //L&R Walls
+				//Debug.Log ("Ball collided with paddle");
+				redirect (axisSwitch.y, 4 * (transform.position.x - col.transform.position.x), true);
 
-			//Debug.Log ("Ball collided with Side Wall");
-			redirect(axisSwitch.x, 0, false);
+			} else if (col.gameObject.name == "Left Wall" || col.gameObject.name == "Right Wall") { //L&R Walls
 
-		} else if (col.gameObject.name == "Top Wall") { //Top Wall
+				//Debug.Log ("Ball collided with Side Wall");
+				redirect (axisSwitch.x, 0, false);
 
-			//Debug.Log ("Ball collided with Top");
-			redirect(axisSwitch.y, 0, false);
+			} else if (col.gameObject.name == "Top Wall") { //Top Wall
 
-		} else if (col.gameObject.name == "Bottom Wall") { //Bottom Wall
+				//Debug.Log ("Ball collided with Top");
+				redirect (axisSwitch.y, 0, false);
 
-			//Debug.Log ("Ball collided with bottom");
-			game.loseLife ();
+			} else if (col.gameObject.name == "Bottom Wall") { //Bottom Wall
 
+				//Debug.Log ("Ball collided with bottom");
+				game.loseLife ();
+
+			}
+				
 		}
+
+		collided = false;
 	}
 
 }

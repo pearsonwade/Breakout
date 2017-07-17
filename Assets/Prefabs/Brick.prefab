@@ -107,3 +107,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 0}
   game: {fileID: 0}
+  initPos: {x: 0, y: 0, z: 0}
