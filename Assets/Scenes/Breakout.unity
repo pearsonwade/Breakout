@@ -6846,12 +6846,12 @@ MonoBehaviour:
   - {fileID: 135403669}
   - {fileID: 337752694}
   - {fileID: 1006309397}
-  brickCount: 10
   ballCon: {fileID: 1195858927}
   padCon: {fileID: 1962342795}
   gameOver: {fileID: 904675064}
   gameWin: {fileID: 1001437439}
   lifeText: {fileID: 1721261548}
+  brickCount: 10
 --- !u!4 &2134751313
 Transform:
   m_ObjectHideFlags: 0
