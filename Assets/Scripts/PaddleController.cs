@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour {
 
-	//Paddle speed
-	private float speed = 20.0f;
-	private Vector3 paddleStart;
+	private float speed = 20.0f; //Paddle speed
+	private Vector3 paddleStart; //Inital location
 
 	//If collide
-	public bool hit { get; set; }
+																								//public bool hit { get; set; }
 	public float collideLoc { get; set; }
 
 	//Ball back to starting point
@@ -17,6 +16,7 @@ public class PaddleController : MonoBehaviour {
 		gameObject.transform.position = paddleStart;
 	}
 
+	//Initialization
 	void Start () {
 		paddleStart = new Vector3 (this.transform.position.x, this.transform.position.y, this.transform.position.z);
 	}
@@ -31,7 +31,6 @@ public class PaddleController : MonoBehaviour {
 		if (direction.x * gameObject.transform.position.x < 0 || (Mathf.Abs(gameObject.transform.position.x) < 12)) {
 			
 			gameObject.transform.Translate (direction * speed * Time.deltaTime);
-
 		}
 	}
 }
