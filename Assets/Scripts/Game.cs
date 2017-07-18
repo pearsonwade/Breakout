@@ -22,6 +22,9 @@ public class Game : MonoBehaviour {
 	private int life;
 	public Text lifeText;
 
+	//Game
+	private bool stopped;
+
 	//Reset ball and paddle to original positions at every new game, level, or life
 	public void resetPlayer() {
 		padCon.restart ();
@@ -46,16 +49,26 @@ public class Game : MonoBehaviour {
 		}
 	}
 
-	//Pause gameplay at end of game
+	//Stop gameplay at end of game
 	public void stopGame() {
 		Time.timeScale = 0;
 
 		//Initiate new game
 		if (Input.GetKeyDown ("space")) {
+			stopped = false;
 			life = 2;
 			levelCount = 0;
 			beginLevel ();
 			brickCount = levels[0].transform.childCount;
+		}
+	}
+
+	//Pause gameplay
+	public void pauseChange() {
+		if (Time.timeScale == 0) {
+			Time.timeScale = 1;
+		} else {
+			Time.timeScale = 0;
 		}
 	}
 
@@ -87,14 +100,27 @@ public class Game : MonoBehaviour {
 		life = 2;
 		brickCount = levels[0].transform.childCount;
 		levelCount = 0;
+		stopped = false;
 		beginLevel ();
 	}
 
 	//Once per frame
 	void Update () {
 
+		if (stopped) {
+			stopGame ();
+		}
+		if (Input.GetKeyDown ("p")) {
+			pauseChange ();
+		}
+
+		else if (Input.GetKeyDown ("escape")) {
+			gameOver.gameObject.SetActive (true);
+			stopped = true;
+		}
+			
 		//Winning conditions
-		if (brickCount <= 0) {
+		else if (brickCount <= 0) {
 
 			if (levelCount < levels.Length - 1) {
 				++levelCount;

@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\CollidersController.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\PaddleController.cs" />
-     <Compile Include="Assets\Scripts\WallController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
