@@ -6,6 +6,9 @@ public class PaddleController : MonoBehaviour {
 
 	private float speed = 20.0f; //Paddle speed
 	private Vector3 paddleStart; //Inital location
+	private float previous;
+
+	public float velocity { get; private set;}
 
 	//If collide
 	public float collideLoc { get; set; }
@@ -31,6 +34,10 @@ public class PaddleController : MonoBehaviour {
 
 			gameObject.transform.Translate (direction * speed * Time.deltaTime);
 		}
+
+		velocity = direction.x;
+
+
 	}
 }
 

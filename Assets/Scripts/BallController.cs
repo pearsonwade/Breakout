@@ -7,10 +7,11 @@ public class BallController : MonoBehaviour {
 	private Vector3 startDir = new Vector3(0,15,0); 	//Initial direction of movement
 	private Vector3 movement; 							//Current direction of movement
 	private Vector3 ballStart; 							//Initial position of ball
-	private bool collided; 								//Status of collision
+
 
 
 	public Game game;
+	public PaddleController paddle;
 
 	public enum axisSwitch { x, y, z}					//Direction change identifier
 
@@ -50,23 +51,37 @@ public class BallController : MonoBehaviour {
 
 		movement = startDir;
 		ballStart = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-		collided = false;
 
 	}
 
-	void FixedUpdate() {
+	void Update() {
 
 		//Move the ball
-		this.transform.Translate (movement * Time.deltaTime);
+		//GetComponent<Rigidbody>().transform.Translate(movement * Time.deltaTime);
+		gameObject.transform.Translate(movement * Time.deltaTime);
 	}
 
 	//Collisions between ball and all objects other than bricks
-	void OnCollisionEnter (Collision col) {
+	void OnTriggerEnter(Collider col) {
 
-		//Prevent simultaneous collisions
-		if (!collided) {
 
-			collided = true;
+		Vector3 p = col.ClosestPoint (transform.position);
+		Vector3 normal = (p - transform.position);
+		normal.z = 0;
+		normal.Normalize ();
+
+		movement = movement - 2 * Vector3.Dot (normal, movement) * normal;
+		movement.z = 0;
+
+		if (col.gameObject.name == "Paddle") {
+
+			movement.x = movement.x + 3 * paddle.velocity;
+
+			//redirect (axisSwitch.y, 4 * (transform.position.x - col.transform.position.x), true);
+		}
+		/*
+
+
 
 			if (col.gameObject.name == "Paddle") {
 
@@ -85,9 +100,8 @@ public class BallController : MonoBehaviour {
 				game.loseLife ();
 
 			}
-		}
-
-		collided = false;
+		//}
+*/
 	}
 
 }
